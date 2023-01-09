@@ -42,15 +42,17 @@ class Solution {
         
 // ----------------->>>>>>>>>       Recursive Solution   <<<<<<<<----------------------- 
         
-        if (root == null) {
-            return new ArrayList<>();
-        }
-        List<Integer> res = new ArrayList<>();
-        res.add(root.val);
-        for (Node child : root.children) {
-            List<Integer> list = preorder(child);
-            res.addAll(list);
-        }
-        return res;
+       if(root==null)
+    {
+        return new ArrayList<>();
     }
+     List<Integer> res=new ArrayList<>();
+     res.add(root.val);
+     
+     for(Node child: root.children)     
+     {
+         res.addAll(preorder(child));
+     }
+    return res;
+}
 }
