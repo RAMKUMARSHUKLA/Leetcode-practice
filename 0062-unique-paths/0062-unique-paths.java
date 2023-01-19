@@ -5,7 +5,7 @@ class Solution {
     }
 
     private int helper(int m, int n, int[][] arr) {
-        if (m < 1 || n < 1) return 0;
+        if (m ==0 || n==0) return 0;
         if (m == 1 && n == 1) return 1;
 
         if (arr[m][n] != 0) return arr[m][n];
