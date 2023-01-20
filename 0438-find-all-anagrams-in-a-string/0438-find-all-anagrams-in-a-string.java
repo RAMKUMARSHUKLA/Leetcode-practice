@@ -1,34 +1,36 @@
 class Solution {
     public List<Integer> findAnagrams(String s, String p) {
-         int freq1[] = new int[26];
-   int freq2[] = new int[26];
-    List<Integer> list = new ArrayList<>();
-    
-    if(s.length()<p.length())
-        return list;
-    
-    for(int i=0; i<p.length(); i++){
-        freq1[s.charAt(i)-'a']++;
-        freq2[p.charAt(i)-'a']++;
+   
+         List<Integer> result = new ArrayList<>();
+        if (s == null || s.length() == 0 || p == null || p.length() == 0) {
+            return result;
+        }
+
+        int[] target = new int[26];
+        for (char c : p.toCharArray()) {
+            target[c - 'a']++;
+        }
+
+        int[] window = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            window[s.charAt(i) - 'a']++;
+            if (i >= p.length()) {
+                window[s.charAt(i - p.length()) - 'a']--;
+            }
+            if (isAnagram(target, window)) {
+                result.add(i - p.length() + 1);
+            }
+        }
+
+        return result;
     }
- 
-    int start=0;
-    int end=p.length();
-    
-    if(Arrays.equals(freq1,freq2))
-        list.add(start);
-    
-    while(end<s.length()){
-        
-        freq1[s.charAt(start)-'a']--;
-        freq1[s.charAt(end)-'a']++;
-        
-        if(Arrays.equals(freq1,freq2))
-        list.add(start+1);
-        
-        start++;
-        end++;
-    }
-  return list;  
+
+    private static boolean isAnagram(int[] target, int[] window) {
+        for (int i = 0; i < 26; i++) {
+            if (target[i] != window[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 }
