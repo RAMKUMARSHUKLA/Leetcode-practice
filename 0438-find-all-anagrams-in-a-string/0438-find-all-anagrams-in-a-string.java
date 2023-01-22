@@ -8,6 +8,7 @@ class Solution {
 
         int[] target = new int[26];
         for (char c : p.toCharArray()) {
+            //gives the index of the alphabet
             target[c - 'a']++;
         }
 
