@@ -1,6 +1,6 @@
 class Solution {
     public boolean canPartition(int[] nums) {
-         int sum = 0;
+        int sum = 0;
         for(int ele : nums ){
             sum+=ele;
         }
