@@ -19,17 +19,17 @@ class Node {
 
 class Solution {
     public List<Integer> preorder(Node root) {
-    if(root==null)
-    {
-        return new ArrayList<>();
-    }
-    
-    List<Integer> arr=new ArrayList<>();
-        arr.add(root.val);
-    for(Node child:root.children)
-    {
-        arr.addAll(preorder(child));
-    }
-    return arr;
+   if(root==null)
+   {
+       return new ArrayList<>();
+   }
+        List<Integer> res=new ArrayList<>();
+        res.add(root.val);
+        for(Node child:root.children)
+        {
+            List<Integer> list=preorder(child);
+            res.addAll(list);
+        }
+        return res;
 }
 }
