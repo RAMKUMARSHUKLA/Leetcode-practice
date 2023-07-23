@@ -1,34 +1,45 @@
 class Solution {
     public String decodeString(String s) {
-         String res = "";
-        Stack<Integer> countStack = new Stack<>();
-        Stack<String> resStack = new Stack<>();
-        int idx = 0;
-        while (idx < s.length()) {
-            if (Character.isDigit(s.charAt(idx))) {
-                int count = 0;
-                while (Character.isDigit(s.charAt(idx))) {
-                    count = 10 * count + (s.charAt(idx) - '0');
-                    idx++;
+        Stack<Integer> countStack=new Stack<>();
+        Stack<String> resStack=new Stack<>();
+        String res="";
+        int i=0;
+        while(i<s.length())
+        {
+            if(Character.isDigit(s.charAt(i)))
+            {
+                int count=0;
+                while(Character.isDigit(s.charAt(i)))
+                {
+                  count=count*10+(s.charAt(i)-'0');
+                i++;  
                 }
                 countStack.push(count);
+                
             }
-            else if (s.charAt(idx) == '[') {
+            else if(s.charAt(i)=='[')
+            {
                 resStack.push(res);
-                res = "";
-                idx++;
+                res="";
+                i++;
             }
-            else if (s.charAt(idx) == ']') {
-                StringBuilder temp = new StringBuilder (resStack.pop());
-                int repeatTimes = countStack.pop();
-                for (int i = 0; i < repeatTimes; i++) {
+            else if(s.charAt(i)==']')
+            {
+                StringBuilder temp=new StringBuilder(resStack.pop());
+                int repeatTimes=countStack.pop();
+                
+                for(int j=0;j<repeatTimes;j++)
+                {
                     temp.append(res);
                 }
-                res = temp.toString();
-                idx++;
+                
+                res=temp.toString();
+                i++;
             }
-            else {
-                res += s.charAt(idx++);
+            else
+            {
+                res+=s.charAt(i++);
+                
             }
         }
         return res;
