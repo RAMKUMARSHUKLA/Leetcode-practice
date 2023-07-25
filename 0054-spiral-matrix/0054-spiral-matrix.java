@@ -1,83 +1,45 @@
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
-//          List<Integer> res=new ArrayList<>();
+    List<Integer> res=new ArrayList<>();
         
-//         int minRow=0,minCol=0,maxRow=matrix.length-1,maxCol=matrix[0].length-1;
-//         int tle=maxRow*maxCol;
-//         int count=0;
-//         while(count<tle)
-//         {
-//             for(int i=minRow,j=minCol; j<maxCol&&count<tle; j++)
-//             {
-//                 res.add(matrix[i][j]);
-//                 count++;
-                
-//             }
-//             minRow++;
-            
-//             for(int i=minRow,j=maxCol;i<maxRow&&count<tle;i++)
-//             {
-//                 res.add(matrix[i][j]);
-//                 count++;
-//             }
-//             maxCol--;
-            
-//             for(int i=maxRow,j=maxCol; j>=minCol&&count<tle; j--)
-//             {
-//                 res.add(matrix[i][j]);
-//                 count++;
-//             }
-//             maxRow--;
-            
-//             for(int i=maxRow,j=minCol; i>=minRow&&count<tle; i--)
-//             {
-//                 res.add(matrix[i][j]);
-//                 count++;
-//             }
-//             minCol++;
-            
-//         }
-//         return res;
-        
-         List<Integer> res = new ArrayList<>();
-        
-        int minRow = 0, minCol = 0, maxRow = matrix.length - 1, maxCol = matrix[0].length - 1;
-        int tle = (maxRow + 1) * (maxCol + 1);
-        int count = 1;
-        
-        while (count <= tle) {
-            for (int j = minCol; j <= maxCol && count <= tle; j++) {
-                res.add(matrix[minRow][j]);
-                count++;
-            }
-            minRow++;
-            
-            for (int i = minRow; i <= maxRow && count <= tle; i++) {
-                res.add(matrix[i][maxCol]);
-                count++;
-            }
-            maxCol--;
-            
-            for (int j = maxCol; j >= minCol && count <= tle; j--) {
-                res.add(matrix[maxRow][j]);
-                count++;
-            }
-            maxRow--;
-            
-            for (int i = maxRow; i >= minRow && count <= tle; i--) {
-                res.add(matrix[i][minCol]);
-                count++;
-            }
-            minCol++;
+    int minRow=0,minCol=0,maxRow=matrix.length-1,maxCol=matrix[0].length-1;
+    int tle=(maxRow+1)*(maxCol+1);
+    int count=1;
+while(count<=tle)
+    {
+        for(int i=minCol; i<=maxCol&& count<=tle; i++)
+        {
+            res.add(matrix[minRow][i]);
+            count++;
         }
+        minRow++;
         
-        return res;
+        for(int i=minRow; i<=maxRow&& count<=tle; i++)
+        {
+            res.add(matrix[i][maxCol]);
+                        count++;
 
+        }
+        maxCol--;
+        
+        for(int i=maxCol; i>=minCol&& count<=tle; i--)
+        {
+            res.add(matrix[maxRow][i]);
+                        count++;
 
+        }
+        maxRow--;
+        
+        for(int i=maxRow; i>=minRow&& count<=tle; i--)
+        {
+            res.add(matrix[i][minCol]);
+                        count++;
 
+        }
+        minCol++;
+    }
 
-
-
+return res;
 
 
     }
