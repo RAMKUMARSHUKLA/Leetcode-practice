@@ -7,12 +7,11 @@ class Solution {
            map.put(i,map.getOrDefault(i,0)+1);
        }
         
-        for(Map.Entry<Integer,Integer> entry:map.entrySet())
+        for(int i:nums)
         {
-            if(entry.getValue()==1)
+            if(map.get(i)==1)
             {
-                int val=entry.getKey();
-                return val;
+                return i;
             }
         }
         return 0;
