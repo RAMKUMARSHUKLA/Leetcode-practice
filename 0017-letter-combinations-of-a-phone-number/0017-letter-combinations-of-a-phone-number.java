@@ -5,23 +5,29 @@ class Solution {
      
     
     
-        ans = new ArrayList<>();
-        if (digits.length() == 0) {
+         ans = new ArrayList<>();
+        
+        if (digits.isEmpty()) {
             return ans;
         }
-        helper("", 0, digits);
+        
+        backtrack("", digits, 0);
+        
         return ans;
     }
     
-    private void helper(String comb, int index, String digits) {
+    private void backtrack(String combination, String digits, int index) {
         if (index == digits.length()) {
-            ans.add(comb);
+            ans.add(combination);
             return;
         }
-            
+        
         String letters = dial[digits.charAt(index) - '0'];
-        for (int i = 0; i < letters.length(); i++) {
-            helper(comb + letters.charAt(i), index + 1, digits);
+        
+        for (char letter : letters.toCharArray()) {
+            backtrack(combination + letter, digits, index + 1);
         }
     }
+
+    
 }
