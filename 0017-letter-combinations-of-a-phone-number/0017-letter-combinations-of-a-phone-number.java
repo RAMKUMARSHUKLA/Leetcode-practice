@@ -1,33 +1,31 @@
 class Solution {
-       List<String> ans;
-    String[] dial = {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+       
+    String[] dial={"0","1","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    List<String> ans=new ArrayList<>();
     public List<String> letterCombinations(String digits) {
-     
-    
-    
-         ans = new ArrayList<>();
+     if(digits.isEmpty())
+     {
+         return new ArrayList<>();
+     }
         
-        if (digits.isEmpty()) {
-            return ans;
-        }
-        
-        backtrack("", digits, 0);
-        
+    helper("",0,digits);
         return ans;
-    }
     
-    private void backtrack(String combination, String digits, int index) {
-        if (index == digits.length()) {
-            ans.add(combination);
-            return;
-        }
-        
-        String letters = dial[digits.charAt(index) - '0'];
-        
-        for (char letter : letters.toCharArray()) {
-            backtrack(combination + letter, digits, index + 1);
-        }
+    
     }
-
+public void helper(String comb,int index,String digits)
+{
+    if(index==digits.length())
+    {
+        ans.add(comb);
+        return;
+    }
+    String letters=dial[digits.charAt(index)-'0'];
+   for(char ch:letters.toCharArray())
+   {
+       helper(comb+ch,index+1,digits);
+   }
+    
+}
     
 }
