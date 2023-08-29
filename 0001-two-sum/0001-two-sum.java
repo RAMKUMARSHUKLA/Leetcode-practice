@@ -10,6 +10,7 @@ class Solution {
            {
                arr[0]=i;
                arr[1]=map.get(target-nums[i]);
+               return arr;
            }
             map.put(nums[i],i);
         }
