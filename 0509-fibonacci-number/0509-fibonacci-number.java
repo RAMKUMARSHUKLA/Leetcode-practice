@@ -1,25 +1,17 @@
 class Solution {
     public int fib(int n) {
-    int storage[]=new int[n+1];
-    for(int i=0;i<n+1;i++)
+    if(n<1)
     {
-        storage[i]=-1;
+        return n;
     }
-    return fib(n,storage);
-    }
-    public static int fib(int n,int[] storage)
+    int dp[]=new int[n+1];
+    dp[0]=0;
+    dp[1]=1;
+    for(int i=2;i<=n;i++)
     {
-        if(n==0 || n==1)
-        {
-            storage[n]=n;
-            return  storage[n];
-        }
-        if(storage[n]!=-1)
-        {
-            return storage[n];
-        }
-        storage[n]=fib(n-1,storage)+fib(n-2,storage);
-        return storage[n];
+        dp[i]=dp[i-1]+dp[i-2];
+    }
+    return dp[n];
         
     }
 }
