@@ -17,12 +17,9 @@ class Solution {
         
 //         return max;
         
+       HashMap<Character,Integer> map=new HashMap<>();
         if(s.length()==0)
-        {
             return 0;
-        }
-        
-        HashMap<Character,Integer> map=new HashMap<Character,Integer>();
         int max=0;
         for(int i=0,j=0;i<s.length();++i)
         {
@@ -34,6 +31,5 @@ class Solution {
             max=Math.max(max,i-j+1);
         }
         return max;
-        
     }
 }
