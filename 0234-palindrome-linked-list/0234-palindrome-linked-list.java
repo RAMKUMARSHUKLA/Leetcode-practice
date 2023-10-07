@@ -11,31 +11,18 @@
 class Solution {
     ListNode pleft;
     public boolean isPalindrome(ListNode head) {
-      pleft=head;
-      return isPalindromeHelper(head);
-        
+        pleft=head;
+        return isPalindromeHelper(head);
     }
-    
-    public boolean isPalindromeHelper(ListNode right)
+    private boolean isPalindromeHelper(ListNode right)
     {
-        if(right==null)
-        {
-            return true;
-        }
+        if(right==null) return true;
         boolean rresult=isPalindromeHelper(right.next);
-        if(rresult==false)
-        {
-            return false;
-        }
-        else if(pleft.val!=right.val)
-        {
-            return false;
-        }
-        else
-        {
-            pleft=pleft.next;
-            return true;
-        }
         
+        if(rresult==false) return false;
+        else if(right.val!=pleft.val) return false;
+        else pleft=pleft.next; return true;
+
     }
+     
 }
