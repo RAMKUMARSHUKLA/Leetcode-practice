@@ -19,23 +19,18 @@ class Node {
 
 class Solution {
     public List<List<Integer>> levelOrder(Node root) {
-      List<List<Integer>> result = new ArrayList<>();
-
-        if(root==null)
-        {
-            return new ArrayList<>();
-        }
-        
-        
-        
-        Queue<Node> queue=new LinkedList<>();  // Making queue of LinkedList type
-        queue.offer(root);  //Adding element in queue having val and address
-        
+     List<List<Integer>> result=new ArrayList<>();
+     Queue<Node> queue=new LinkedList<>();
+     if(root==null)
+     {
+         return result;
+     }
+     queue.offer(root);
+     
         while(!queue.isEmpty())
         {
             int size=queue.size();
             List<Integer> level=new ArrayList<>();
-            
             for(int i=0;i<size;i++)
             {
                 Node node=queue.poll();
